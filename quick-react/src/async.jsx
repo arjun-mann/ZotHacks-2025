@@ -1,79 +1,58 @@
 // import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// function ContinueButton() {
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [error, setError] = useState(null);
+// export default function ContinueButton({age, weight, height}) {
 //   const navigate = useNavigate();
-
-//   const handleContinue = async () => {
-//     setIsLoading(true);
-//     setError(null);
+  
+//   const handleContinue = () => {
+//     // Just log the data for now
+//     console.log('Age:', age, 'Weight:', weight, 'Height:', height);
     
-//     try {
-//       const response = await fetch('/api/save-progress', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//           userId: 'user123', // Replace with actual user ID
-//           step: 'trader-selection',
-//           data: {
-//             selectedTrader: 'trader1',
-//             timestamp: new Date().toISOString()
-//           }
-//         })
-//       });
-      
-//       if (!response.ok) {
-//         throw new Error('Failed to save');
-//       }
-      
-//       const result = await response.json();
-//       console.log('Saved:', result);
-      
-//       // Navigate to next page
-//       navigate('/gym-choice');
-      
-//     } catch (error) {
-//       console.error('Error:', error);
-//       setError('Failed to continue. Please try again.');
-//     } finally {
-//       setIsLoading(false);
-//     }
+//     // Navigate to next page
+//     navigate('/gym-choice');
 //   };
 
-//   return (
-//     <div>
-//       <button 
-//         onClick={handleContinue}
-//         disabled={isLoading}
-//         className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400"
-//       >
-//         {isLoading ? 'Saving...' : 'Continue'}
-//       </button>
-      
-//       {error && (
-//         <p className="text-red-500 mt-2">{error}</p>
-//       )}
-//     </div>
-//   );
-// }
 
-export default function ContinueButton() {
+
+// must have backend setup already or else it wont fetch
+export default function ContinueButton({age, weight, height}) {
   const navigate = useNavigate()
   
-  const handleContinue = () => {
-    navigate('/gym-choice');
+  const handleContinue = async() => {
+    try{
+      const response = await fetch('/api/save-bio', {
+        method: 'POST',
+          headers:{
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            weight: weight,
+            height: height,
+            age: age,
+          
+          
+            timestamp: new Date().toISOString()
+        })
+      });
+    if (response.ok) {
+        const data = await response.json();
+        console.log('Saved:', data);
+        navigate('/gym-choice');
+      } else {
+        console.error('Failed to save');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
     <div>
       <button 
         onClick={handleContinue}
+         className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
       >
-        Next
+        Continue
       </button>
     </div>
   );
