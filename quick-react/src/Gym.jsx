@@ -1,37 +1,8 @@
-
-
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-
-function GridExample() {
-  return (
-    <Row xs={1} md={2} className="g-4">
-      {Array.from({ length: 6 }).map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-  );
-}
-
 import GymOption from './GymOption.jsx'
 
 export default function Gym(){
     return(
         <div>
-            <GridExample/>
             <GymOption
                 imageUrl='https://images.squarespace-cdn.com/content/v1/5b60d4fa70e802968763e7f5/1541539890535-UJ5P5NGX9C7XME811A6W/ARC+Overhead%2C+Source-+UCI+Campus+Recreation.jpg?format=1000w'
                 text='Anteater Recreation Center'

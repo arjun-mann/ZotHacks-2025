@@ -6,6 +6,7 @@ export default function InputField(props) {
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
+  
 
   return (
     <div>
@@ -18,5 +19,6 @@ export default function InputField(props) {
       />
       <p>Your {props.field} is {inputValue} {inputValue != '' ? props.units : ''}</p>
     </div>
+    
   )
 }

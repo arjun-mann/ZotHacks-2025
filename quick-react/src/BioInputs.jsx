@@ -1,6 +1,6 @@
 import InputField from './InputField.jsx'
 
-export default function BioInputs() {
+export default function BioInputs(props) {
   return (
     <div>
       <InputField field='Age' units='years'/>
