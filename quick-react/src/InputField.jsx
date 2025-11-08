@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
-
-export default function InputField(props) {
-  const [inputValue, setInputValue] = useState('');
-
+export default function InputField({field, units, value, onChange}) {
   const handleChange = (event) => {
-    setInputValue(event.target.value);
+    onChange(event.target.value);
   };
   
 
   return (
     <div>
-      <label htmlFor="nameInput">{props.field}: </label>
+      <label htmlFor="nameInput">{field}:</label>
       <input 
         type='text' 
-        value={inputValue} 
+        value={value}
         onChange={handleChange} 
         placeholder='Type here...'
       />
-      <p>Your {props.field} is {inputValue} {inputValue != '' ? props.units : ''}</p>
+      <p>Your {field} is {value} {value != '' ? units : ''}</p>
     </div>
     
   )
