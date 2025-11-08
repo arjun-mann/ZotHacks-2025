@@ -2,31 +2,21 @@
 import requests
 import os
 import json
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from dotenv import load_dotenv
 
-app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React dev server
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-def get_exercises(weight:float, height:float, age:int, gender:bool, gym: str, category:str)->str:
+def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, category:str, available_days:list[str], exercise_days:int)->dict:
     """
-    Takes in the desired type and difficulty, and then
-    returns a dictionary of up to 5 suggested exercises that 
-    match the given values. Each exercise is included with its
-    name, type, equipment, difficulty, and instructions
+    Takes in the specified parameters, and then returns
+    a suggested work out for the week in the form of a
+    single string in the style of a json. (sex parameter
+    is 0 for female and 1 for male)
     """
 
-    gender="Male" if gender else "Female"
+    load_dotenv()
 
-    API_KEY = "AIzaSyAyYfiRW4Yg6am_9m89S4XCArqpEOyZDh8"
+    sex=1 if sex else 0
+
+    API_KEY = os.environ.get("GEMINI_API_KEY")
     if not API_KEY:
         raise ValueError("GEMINI_API_KEY not set in environment variables")
     url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
@@ -41,8 +31,30 @@ def get_exercises(weight:float, height:float, age:int, gender:bool, gym: str, ca
                         f"Weight: {weight} pounds"
                         f"Height: {height} inches"
                         f"Ages {age} years"
-                        f"Sex: {gender}"
-                        f""
+                        f"Sex: {sex}"
+                        f"Gym: {gym}"
+                        f"Exercise Category: {category}"
+                        f"Days of the week available to exercise on: {available_days}"
+                        f"Number of days selected for exercise out of available days: {exercise_days}"
+                        "For each day, specify what exercises to do, how many reps, and how many sets"
+                        "Include a single rest day and only one rest day"
+                        "Don't include any intro at the beginning. Only include the schedule, nothing extra"
+                        "Assume the day starts on Sunday. For each day, indicate what day of the week it is"
+                        "When picking an exercise, select ones that are likely to be known, nothing exotic."
+                        "Consider the gym being used, and so only select well known exercises or machines"
+                        "that would be available in that facility. Try to not give long names and only use"
+                        "already existing and commonly known exercises"
+                        "Give output in the form of a json file. Do not say ```json at the beginning and do"
+                        "not say ``` at the end. Start with a { and end with a } without anything in between"
+                        "except the intended schedule in the form of a json. Each entry should represent a day,"
+                        "and in that day a workout, and in that workout each exercise with the traits"
+                        "exercise, reps, and sets in that order. Do not include anything before or after the starting and"
+                        "ending curly braces. For the rest day, exercise is Rest, reps and sets are both N/A. Consider"
+                        "which days are available, and out of those days only select the number of days as specified. A"
+                        "day that is not specified as being available can be selected as a rest day, but if so then do"
+                        "not include that day in the output. Only include days that are included in the available days."
+                        "Prioritize using a day that is not included in the specified available days as the rest day rather"
+                        "than one of the workout days"
 
                     }
                 ]
@@ -64,11 +76,17 @@ def get_exercises(weight:float, height:float, age:int, gender:bool, gym: str, ca
         data = response.json()
         # The structure of the response may vary; often the generated text is under 'candidates'
         generated_text = data["candidates"][0]["content"]["parts"][0]["text"]
-        print(generated_text)
+        return json.loads(generated_text)
 
     else:
-        print(f"Request failed with status code {response.status_code}")
-        print(response.text)
+        return f"Request failed with status code {response.status_code}"
 
-if __name__ == "__main__":
-    get_exercises()
+#Used for testing
+if __name__=="__main__":
+    weekly_plan=get_exercises(165,73,21,1,"UCI ARC","General Workout",["Sunday","Tuesday","Thursday","Saturday"],3)
+
+    for day, exercises in weekly_plan.items():
+        print(f"--- {day} ---")
+        for ex in exercises:
+            print(f"{ex['exercise']} | Reps: {ex['reps']} | Sets: {ex['sets']}")
+            print()
