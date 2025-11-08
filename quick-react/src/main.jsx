@@ -1,10 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
-import App from './App.jsx'
+import Home from './Home.jsx'
+import Gym from './Gym.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <Gym />
   </StrictMode>,
 )
