@@ -7,6 +7,6 @@ import Gym from './Gym.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Gym />
+    <Gym/>
   </StrictMode>,
 )
