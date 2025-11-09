@@ -4,6 +4,7 @@ import BioInputs from './BioInputs.jsx'
 import Goals from './dropdown.jsx'
 import ContinueButton from './async.jsx'
 import React, { useState } from 'react';
+import Navbar from './Navbar.jsx'
 
 
 /*
