@@ -16,7 +16,7 @@ def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, categ
 
     sex=1 if sex else 0
 
-    API_KEY = os.environ.get("GEMINI_API_KEY")
+    API_KEY = "AIzaSyAyYfiRW4Yg6am_9m89S4XCArqpEOyZDh8"
     if not API_KEY:
         raise ValueError("GEMINI_API_KEY not set in environment variables")
     url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
@@ -85,8 +85,10 @@ def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, categ
 if __name__=="__main__":
     weekly_plan=get_exercises(165,73,21,1,"UCI ARC","General Workout",["Sunday","Tuesday","Thursday","Saturday"],3)
 
-    for day, exercises in weekly_plan.items():
-        print(f"--- {day} ---")
-        for ex in exercises:
-            print(f"{ex['exercise']} | Reps: {ex['reps']} | Sets: {ex['sets']}")
-            print()
+    print(weekly_plan)
+    
+    #for day, exercises in weekly_plan.items():
+        #print(f"--- {day} ---")
+        #for ex in exercises:
+            #print(f"{ex['exercise']} | Reps: {ex['reps']} | Sets: {ex['sets']}")
+            #print()
