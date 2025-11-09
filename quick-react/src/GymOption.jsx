@@ -45,7 +45,7 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
         {/* The superimposed text */}
         <div style={{
           position: 'relative', // Relative position makes it stack correctly with zIndex
-          color: 'white',
+          color: 'black',
           padding: '15px 25px',
           fontSize: '28px',
           fontWeight: 'bold',

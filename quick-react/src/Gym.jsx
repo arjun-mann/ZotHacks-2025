@@ -4,14 +4,34 @@ export default function Gym(){
     return(
         <div>
             <GymOption
-                imageUrl='https://images.squarespace-cdn.com/content/v1/5b60d4fa70e802968763e7f5/1541539890535-UJ5P5NGX9C7XME811A6W/ARC+Overhead%2C+Source-+UCI+Campus+Recreation.jpg?format=1000w'
+                imageUrl="./assets/images/arc.jpg"
                 text='Anteater Recreation Center'
                 tintColor='rgba(255,0,0, 0.3)'
             />
             <GymOption
-                imageUrl='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.instagram.com%2Fp%2FCNJXso6HKlh%2F&psig=AOvVaw2H8Sbj2kqh0EpEz_T7wNtW&ust=1762724137728000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCLCI7qHB45ADFQAAAAAdAAAAABAE'
+                imageUrl="./assets/images/me_gym.jpg"
                 text='Middle Earth'
                 tintColor='rgba(0,255,0,0.3)'
+            />
+            <GymOption
+                imageUrl="./assets/images/mesa_court.jpg"
+                text='Mesa Court'
+                tintColor='rgba(0,0,255,0.3)'
+            />
+            <GymOption
+                imageUrl="./assets/images/pv.jpg"
+                text='Plaza Verde'
+                tintColor='rgba(255,255,0,0.3)'
+            />
+            <GymOption
+                imageUrl="./assets/images/vdc.jpg"
+                text='Vista del Campo'
+                tintColor='rgba(255,0,255,0.3)'
+            />
+            <GymOption
+                imageUrl="./assets/images/vdcn.jpg"
+                text='Vista del Campo Norte'
+                tintColor='rgba(0,255,255,0.3)'
             />
         </div>
     );

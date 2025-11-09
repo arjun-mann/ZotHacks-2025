@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.p-multiselect-panel .p-checkbox {
+    display: none;
+}
+
+/* Adjust item padding since checkboxes are gone */
+.p-multiselect-panel .p-multiselect-item {
+    padding-left: 1rem;
+}
