@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { MultiSelect } from 'primereact/multiselect';
-
+import './Days.css';
 export default function Days() {
     const [selectedDays, setSelectedDays] = useState(null);
     const days = [
@@ -23,9 +23,10 @@ export default function Days() {
                 optionLabel="name" 
                 display="chip" 
                 placeholder="Select Days" 
+                classNamee="custom-multiselect"
                 maxSelectedLabels={3} 
-                style={{ width: '300px' }}
                 showSelectAll={false}
+                panelClassName="custom-panel"
                 
             />
         </div>

@@ -10,8 +10,8 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
     >
       <div style={{ 
           position: 'relative', 
-          width: '500px', // Example width
-          height: '300px', // Example height
+          width: '100%', // Example width
+          height: '100%', // Example height
           overflow: 'hidden',
           display: 'flex',       // Use flexbox to easily center content
           alignItems: 'center',  // Center vertically
@@ -24,6 +24,8 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
           alt="Background" 
           style={{ 
             position: 'absolute', // Position absolute to fill, but behind overlay
+            top: 0,
+            left: 0,
             width: '100%', 
             height: '100%', 
             objectFit: 'cover',
@@ -45,12 +47,16 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
         {/* The superimposed text */}
         <div style={{
           position: 'relative', // Relative position makes it stack correctly with zIndex
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
           color: 'black',
           padding: '15px 25px',
           fontSize: '28px',
           fontWeight: 'bold',
           textAlign: 'center',
-          zIndex: 3 // Ensure text is above both image and tint
+          zIndex: 3, // Ensure text is above both image and tint
+          width: '90%'
         }}>
           {text}
         </div>

@@ -13,7 +13,6 @@ export default function InputField({field, units, value, onChange}) {
         onChange={handleChange} 
         placeholder='Type here...'
       />
-      <p>Your {field} is {value} {value != '' ? units : ''}</p>
     </div>
     
   )
