@@ -25,12 +25,13 @@ a:hover {
 }
 
 body {
-  background-color: #bbf;
+  background-color: #99f;
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  justify-content: left;
 }
 
 h1 {

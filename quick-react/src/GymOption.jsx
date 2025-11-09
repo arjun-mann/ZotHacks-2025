@@ -24,8 +24,6 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
           alt="Background" 
           style={{ 
             position: 'absolute', // Position absolute to fill, but behind overlay
-            top: 0,
-            left: 0,
             width: '100%', 
             height: '100%', 
             objectFit: 'cover',
@@ -47,16 +45,12 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
         {/* The superimposed text */}
         <div style={{
           position: 'relative', // Relative position makes it stack correctly with zIndex
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: 'black',
+          color: 'white',
           padding: '15px 25px',
           fontSize: '28px',
           fontWeight: 'bold',
           textAlign: 'center',
-          zIndex: 3, // Ensure text is above both image and tint
-          width: '90%'
+          zIndex: 3 // Ensure text is above both image and tint
         }}>
           {text}
         </div>

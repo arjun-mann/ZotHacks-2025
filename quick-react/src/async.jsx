@@ -15,12 +15,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 // must have backend setup already or else it wont fetch
-export default function ContinueButton({age, weight, height, selectedDays, goal}) {
+export default function ContinueButton({age, weight, height, selectedDays, goal, sex,gym }) {
   const navigate = useNavigate()
   
   const handleContinue = async() => {
-     const dayNames = selectedDays.map(day => day.name);
-     navigate('/gym-choice');
+    const exerciseDays = selectedDays.length;
+    navigate('/gym-choice');
     console.log('Sending:', {age, weight, heightselectedDays: dayNames, goal });
     try{
       const response = await fetch('http://127.0.0.1:5000/exercises', {
@@ -32,11 +32,11 @@ export default function ContinueButton({age, weight, height, selectedDays, goal}
             weight: parseFloat(weight),
             height: parseFloat(height),
             age: parseInt(age),
-            sex: true, // or get from form
-            gym: "UCI ARC",// get from form
+            sex: sex, // or get from form
+            gym: gym,// get from form
             category: goal|| "General Workout", // get from goals
-            available_days: dayNames,
-            exercise_days: 3 // or get from form
+            available_days: selectedDays,
+            exercise_days: exerciseDays // or get from form
        
         })
       });

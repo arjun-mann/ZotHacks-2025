@@ -5,22 +5,28 @@ function WorkoutDisplay() {
   const [workoutPlan, setWorkoutPlan] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState(0);
+  const [age, setAge] = useState(0);
+  const [sex, setSex] = useState(true);
+  const [gym, setGym] = useState("UCI ARC");
+  const [category, setCategory] = useState("General Workout");
+  const [available_days, setAvailableDays] = useState([]);
 
   useEffect(() => {
     const fetchWorkout = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/exercises", {
+        const response = await fetch("http://127.0.0.1:5175/exercises", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            weight: 165,
-            height: 73,
-            age: 21,
-            sex: true,
-            gym: "UCI ARC",
-            category: "General Workout",
-            available_days: ["Sunday", "Tuesday", "Thursday"],
-            exercise_days: 3,
+            weight: weight,
+            height: height,
+            age: age,
+            sex: sex,
+            gym: gym,
+            category: category,
+            available_days: available_days
           }),
         });
 

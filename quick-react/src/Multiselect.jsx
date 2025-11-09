@@ -16,6 +16,7 @@ export default function Days() {
         { name: 'Saturday', code: 'S', fullName: 'Saturday' },
     ];
 
+   
     const handleDayToggle = (dayCode) => {
         if (selectedDays.includes(dayCode)) {
             setSelectedDays(selectedDays.filter(d => d !== dayCode));

@@ -6,14 +6,33 @@ export default function InputField({field, units, value, onChange}) {
 
   return (
     <div>
-      <label htmlFor="nameInput">{field}:</label>
-      <input 
-        type='text' 
-        value={value}
-        onChange={handleChange} 
-        placeholder='Type here...'
-      />
+      <div style={{ 
+        display: 'flex', 
+        gap: '20px', // Adds space between label and input
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+        <div class='element-one'>
+          <label htmlFor="nameInput">{field}:</label>
+        </div>
+        <div class='element-two' style={{backgroundColor:'#ddf'}}>
+          <input 
+            type='text' 
+            value={value}
+            onChange={handleChange} 
+            placeholder='Type here...'
+          />
+        </div>
+      </div>
+      
     </div>
-    
   )
 }
+
+        // 
+        // <input 
+        //   type='text' 
+        //   value={value}
+        //   onChange={handleChange} 
+        //   placeholder='Type here...'
+        // />

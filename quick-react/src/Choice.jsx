@@ -10,14 +10,23 @@ export default function Choice({label, options, decision, onChoose}){
     
     return(
         <div>
-            {/* This here is broken right now! */}
-            <label>{label}:</label>
-            <select onChange={handleChange} defaultValue="">
-                <option value='' disabled>-- Please Select --</option>
-                {options.map((item, index) => (
-                    <option key={index} value={item}>{item}</option>
-                ))}
-            </select>
+            <div style={{ 
+                display: 'flex', 
+                alignItems: 'center',
+                justifyContent: 'space-between'
+            }}>
+                <label>{label}:</label>
+                <select 
+                    onChange={handleChange} 
+                    defaultValue=""
+                    style={{backgroundColor:'#ddf'}}
+                >
+                    <option value='' disabled>-- Please Select --</option>
+                    {options.map((item, index) => (
+                        <option key={index} value={item}>{item}</option>
+                    ))}
+                </select>
+            </div>
         </div>
     );
 }
