@@ -35,7 +35,7 @@ function FitnessNavbar() {
             fontSize: '24px'
           }}
         >
-          PERSONAL TRAINER
+          EATER ACTIVE
         </div>
       </Container>
     </Navbar>
