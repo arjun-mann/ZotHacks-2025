@@ -19,6 +19,7 @@ export default function ContinueButton({age, weight, height}) {
   const navigate = useNavigate()
   
   const handleContinue = async() => {
+    navigate('/gym-choice');
     try{
       const response = await fetch('/api/save-bio', {
         method: 'POST',
@@ -37,7 +38,6 @@ export default function ContinueButton({age, weight, height}) {
     if (response.ok) {
         const data = await response.json();
         console.log('Saved:', data);
-        navigate('/gym-choice');
       } else {
         console.error('Failed to save');
       }

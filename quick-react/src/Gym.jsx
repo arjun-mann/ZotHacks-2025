@@ -4,7 +4,7 @@ export default function Gym(){
     return(
         <div>
             <GymOption
-                imageUrl='https://images.squarespace-cdn.com/content/v1/5b60d4fa70e802968763e7f5/1541539890535-UJ5P5NGX9C7XME811A6W/ARC+Overhead%2C+Source-+UCI+Campus+Recreation.jpg?format=1000w'
+                imageUrl=
                 text='Anteater Recreation Center'
                 tintColor='rgba(255,0,0, 0.3)'
             />
