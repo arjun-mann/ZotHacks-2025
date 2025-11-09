@@ -12,7 +12,8 @@ export default function Home(){
     const [weight, setWeight] = useState('');
     const [height, setHeight] = useState('');
     const [selectedDays, setSelectedDays] = useState([]);
-    const goalList = ['Endurance', 'Weight-lifting', 'General']
+    const goalList = ['General', 'Endurance', 'Weight-lifting']
+    const sexList = ['Rather not say', 'Female', 'Male']
 
     return(
         <div>
@@ -36,7 +37,9 @@ export default function Home(){
                 onChange={setAge}
             />
 
-            <Choice options={goalList}/>
+            <Choice label='Sex assigned at birth' options={sexList}/>
+            <Choice label='Your workout goal' options={goalList}/>
+
           
             <Days
             selectedDays={selectedDays}

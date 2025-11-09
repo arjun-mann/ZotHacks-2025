@@ -2,7 +2,15 @@ import GymOption from './GymOption.jsx'
 
 export default function Gym(){
     return(
-        <div>
+        <div  style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '24px',
+            padding: '40px',
+            maxWidth: '1600px',
+            margin: '0 auto'
+        
+        }}>
             <GymOption
                 imageUrl="./assets/images/arc.jpg"
                 text='Anteater Recreation Center'
