@@ -10,8 +10,8 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
     >
       <div style={{ 
           position: 'relative', 
-          width: '100%', // Example width
-          height: '100%', // Example height
+          width: '400px', // Example width
+          height: '300px', // Example height
           overflow: 'hidden',
           display: 'flex',       // Use flexbox to easily center content
           alignItems: 'center',  // Center vertically
