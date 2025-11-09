@@ -4,7 +4,7 @@ import os
 import json
 from dotenv import load_dotenv
 
-def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, category:str, available_days:list[str], exercise_days:int)->dict:
+def get_exercises(weight: float, height: float, age: int, sex: bool, gym: str, category: str, available_days: list[str]) -> dict:
     """
     Takes in the specified parameters, and then returns
     a suggested work out for the week in the form of a
@@ -16,7 +16,7 @@ def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, categ
 
     sex=1 if sex else 0
 
-    API_KEY = os.environ.get("GEMINI_API_KEY")
+    API_KEY = "AIzaSyAyYfiRW4Yg6am_9m89S4XCArqpEOyZDh8"
     if not API_KEY:
         raise ValueError("GEMINI_API_KEY not set in environment variables")
     url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
@@ -35,7 +35,6 @@ def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, categ
                         f"Gym: {gym}"
                         f"Exercise Category: {category}"
                         f"Days of the week available to exercise on: {available_days}"
-                        f"Number of days selected for exercise out of available days: {exercise_days}"
                         "For each day, specify what exercises to do, how many reps, and how many sets"
                         "Include a single rest day and only one rest day"
                         "Don't include any intro at the beginning. Only include the schedule, nothing extra"
@@ -50,7 +49,7 @@ def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, categ
                         "and in that day a workout, and in that workout each exercise with the traits"
                         "exercise, reps, and sets in that order. Do not include anything before or after the starting and"
                         "ending curly braces. For the rest day, exercise is Rest, reps and sets are both N/A. Consider"
-                        "which days are available, and out of those days only select the number of days as specified. A"
+                        "only which days are available. A"
                         "day that is not specified as being available can be selected as a rest day, but if so then do"
                         "not include that day in the output. Only include days that are included in the available days."
                         "Prioritize using a day that is not included in the specified available days as the rest day rather"
@@ -85,8 +84,10 @@ def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, categ
 if __name__=="__main__":
     weekly_plan=get_exercises(165,73,21,1,"UCI ARC","General Workout",["Sunday","Tuesday","Thursday","Saturday"],3)
 
-    for day, exercises in weekly_plan.items():
-        print(f"--- {day} ---")
-        for ex in exercises:
-            print(f"{ex['exercise']} | Reps: {ex['reps']} | Sets: {ex['sets']}")
-            print()
+    print(weekly_plan)
+    
+    #for day, exercises in weekly_plan.items():
+        #print(f"--- {day} ---")
+        #for ex in exercises:
+            #print(f"{ex['exercise']} | Reps: {ex['reps']} | Sets: {ex['sets']}")
+            #print()

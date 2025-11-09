@@ -1,0 +1,103 @@
+.day-selector-container {
+    padding: 20px;
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.day-button-group {
+    display: flex;
+    gap: 8px;
+}
+
+.day-button {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    border-radius: 50% !important;
+    border: 2px solid #dadce0 !important;
+    background-color: #ffffff !important;
+    color: #5f6368 !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    transition: all 0.15s ease-in-out !important;
+    cursor: pointer;
+    position: relative;
+}
+
+.day-button:hover {
+    background-color: #f1f3f4 !important;
+    border-color: #5f6368 !important;
+    transform: scale(1.08);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.day-button:focus,
+.day-button:focus-visible {
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2) !important;
+    outline: none !important;
+}
+
+.day-button:active {
+    transform: scale(0.95) !important;
+}
+
+/* Selected state */
+.day-button.selected,
+.day-button.btn-primary {
+    background-color: #1a73e8 !important;
+    border-color: #1a73e8 !important;
+    color: #ffffff !important;
+}
+
+.day-button.selected:hover,
+.day-button.btn-primary:hover {
+    background-color: #1557b0 !important;
+    border-color: #1557b0 !important;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.4) !important;
+    transform: scale(1.08);
+}
+
+/* Tooltip styling */
+.tooltip {
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.tooltip-inner {
+    background-color: #5f6368;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tooltip .tooltip-arrow::before {
+    border-top-color: #5f6368;
+}
+
+/* Remove default Bootstrap button group styles that cause issues */
+.day-button-group .btn-check:checked + .btn,
+.day-button-group .btn.active,
+.day-button-group .btn.show,
+.day-button-group .btn:first-child:active {
+    background-color: #7523c1 !important;
+    border-color: #3a0845 !important;
+    color: #ffffff !important;
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+    .day-button {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        font-size: 13px !important;
+    }
+    
+    .day-button-group {
+        gap: 6px;
+    }
+}

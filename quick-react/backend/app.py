@@ -1,25 +1,54 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from get_exercises import get_exercises
 
-app = Flask(__name__)
-CORS(app)  # allow requests from frontend (React)
+# Create the FastAPI app
+app = FastAPI()
 
-# POST route for frontend to call
-@app.route("/exercises", methods=["POST"])
-def exercises():
-    data = request.get_json()
-    weight = data.get("weight")
-    height = data.get("height")
-    age = data.get("age")
-    sex = data.get("sex")
-    gym = data.get("gym")
-    category = data.get("category")
-    available_days = data.get("available_days", [])
-    exercise_days = data.get("exercise_days", 0)
-    
-    plan = get_exercises(weight, height, age, sex, gym, category, available_days, exercise_days)
-    return plan
+# Allow your React frontend to communicate with this backend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # for testing; replace with your frontend URL in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# Define the expected structure of the incoming JSON
+class ExerciseRequest(BaseModel):
+    weight: float
+    height: float
+    age: int
+    sex: bool
+    gym: str
+    goal: str                  # <-- was 'category'
+    selectedDays: list[str]    # <-- was 'available_days'
+
+
+# Define the route for generating exercises
+@app.post("/exercises")
+def generate_exercises(data: ExerciseRequest):
+    try:
+        # Call your get_exercises function
+        workout_plan = get_exercises(
+            weight=data.weight,
+            height=data.height,
+            age=data.age,
+            sex=data.sex,
+            gym=data.gym,
+            category=data.category,
+            available_days=data.available_days,
+        )
+
+        # Return the generated workout plan as JSON
+        return {"status": "success", "workout_plan": workout_plan}
+
+    except Exception as e:
+        # Handle any errors gracefully
+        return {"status": "error", "message": str(e)}
+
+# Optional root route for testing
+@app.get("/")
+def root():
+    return {"message": "FastAPI backend is running!"}
