@@ -39,26 +39,6 @@ export default function Gym(){
                 text='Vista de Campo Norte'
                 tintColor='rgba(17, 81, 87, 0.4)'
             />
-            <GymOption
-                imageUrl="./assets/images/mesa_court.jpg"
-                text='Mesa Court'
-                tintColor='rgba(0,0,255,0.3)'
-            />
-            <GymOption
-                imageUrl="./assets/images/pv.jpg"
-                text='Plaza Verde'
-                tintColor='rgba(255,255,0,0.3)'
-            />
-            <GymOption
-                imageUrl="./assets/images/vdc.jpg"
-                text='Vista del Campo'
-                tintColor='rgba(255,0,255,0.3)'
-            />
-            <GymOption
-                imageUrl="./assets/images/vdcn.jpg"
-                text='Vista del Campo Norte'
-                tintColor='rgba(0,255,255,0.3)'
-            />
         </div>
     );
 }
