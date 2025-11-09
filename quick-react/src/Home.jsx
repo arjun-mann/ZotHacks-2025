@@ -11,16 +11,19 @@ export default function Home(){
     const [age, setAge] = useState('');
     const [weight, setWeight] = useState('');
     const [height, setHeight] = useState('');
-    const [selectedDays, setSelectedDays] = useState([]);
+
     const sexList = ['Rather not say', 'Female', 'Male']
-    const [sex, setSex] = useState(sexList[0]);
+    const [sex, setSex] = useState('');
     const goalList = ['General', 'Endurance', 'Weight-lifting']
-    const [goal, setGoal] = useState(goalList[0]);
+    const [goal, setGoal] = useState('');
+    
+    const [selectedDays, setSelectedDays] = useState([]);
     
 
     return(
         <div>
             <Header/>
+            <br />
             <InputField 
                 field='Weight' 
                 units='lbs'
@@ -47,11 +50,14 @@ export default function Home(){
                 label='Sex assigned at birth' 
                 options={sexList}
                 decision={sex}
+                onChoose={setSex}
             />
+            <br />
             <Choice 
                 label='Your workout goal' 
                 options={goalList}
-                decision={goal}
+                decision={sex}
+                onChoose={setGoal}
             />
 
           

@@ -3,21 +3,21 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
-export default function Choice({label, options, decision}){
+export default function Choice({label, options, decision, onChoose}){
     const handleChange = (event) => {
-        decision = event.target.value
+        onChoose(event.target.value)
     };
     
     return(
         <div>
             {/* This here is broken right now! */}
             <label>{label}:</label>
-            <select onChange={handleChange}>
+            <select onChange={handleChange} defaultValue="">
+                <option value='' disabled>-- Please Select --</option>
                 {options.map((item, index) => (
-                    <option value={item} >{item}</option>
+                    <option key={index} value={item}>{item}</option>
                 ))}
             </select>
-            <p>you chose {decision}</p>
         </div>
     );
 }
