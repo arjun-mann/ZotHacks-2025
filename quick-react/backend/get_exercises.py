@@ -4,7 +4,7 @@ import os
 import json
 from dotenv import load_dotenv
 
-def get_exercises(weight:float, height:float, age:int, sex:bool, gym: str, category:str, available_days:list[str])->dict:
+def get_exercises(weight: float, height: float, age: int, sex: bool, gym: str, category: str, available_days: list[str]) -> dict:
     """
     Takes in the specified parameters, and then returns
     a suggested work out for the week in the form of a

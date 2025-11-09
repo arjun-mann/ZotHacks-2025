@@ -19,7 +19,7 @@ export default function Choice({label, options, decision, onChoose}){
                 <select 
                     onChange={handleChange} 
                     defaultValue=""
-                    style={{backgroundColor:'#ddf'}}
+                    style={{backgroundColor:'rgba(7, 7, 26, 1)'}}
                 >
                     <option value='' disabled>-- Please Select --</option>
                     {options.map((item, index) => (

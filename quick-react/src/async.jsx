@@ -21,9 +21,9 @@ export default function ContinueButton({age, weight, height, selectedDays, goal,
   const handleContinue = async() => {
     const exerciseDays = selectedDays.length;
     navigate('/gym-choice');
-    console.log('Sending:', {age, weight, heightselectedDays: dayNames, goal });
+    // console.log('Sending:', {age, weight, height, selectedDays: dayNames, goal });
     try{
-      const response = await fetch('http://127.0.0.1:5000/exercises', {
+      const response = await fetch('http://127.0.0.1:8000/exercises', {
         method: 'POST',
           headers:{
             'Content-Type': 'application/json',

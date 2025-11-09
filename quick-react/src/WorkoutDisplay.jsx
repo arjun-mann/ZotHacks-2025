@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Card, ListGroup, Alert } from "react-bootstrap";
 
 function WorkoutDisplay() {
+  const location = useLocation();
+  const {
+    weight,
+    height,
+    age,
+    sex,
+    gym,
+    category,
+    available_days
+  } = location.state || {}; // <-- destructure all input from previous page
+
   const [workoutPlan, setWorkoutPlan] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [weight, setWeight] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [age, setAge] = useState(0);
-  const [sex, setSex] = useState(true);
-  const [gym, setGym] = useState("UCI ARC");
-  const [category, setCategory] = useState("General Workout");
-  const [available_days, setAvailableDays] = useState([]);
 
   useEffect(() => {
     const fetchWorkout = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5175/exercises", {
+        const response = await fetch("http://127.0.0.1:8000/exercises", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -45,8 +50,13 @@ function WorkoutDisplay() {
       }
     };
 
-    fetchWorkout();
-  }, []);
+    if (weight && height && age && available_days) {
+      fetchWorkout();
+    } else {
+      setLoading(false);
+      setError("No input data received.");
+    }
+  }, [weight, height, age, sex, gym, category, available_days]);
 
   if (loading)
     return (

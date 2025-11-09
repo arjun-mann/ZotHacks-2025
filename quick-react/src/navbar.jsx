@@ -8,7 +8,8 @@ function FitnessNavbar() {
       style={{
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
         backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
+        borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
       }}
       variant="dark"
     >
@@ -32,7 +33,9 @@ function FitnessNavbar() {
             transform: 'translateX(-50%)',
             color: 'white',
             fontWeight: 'bold',
-            fontSize: '24px'
+            fontSize: '24px',
+            letterSpacing: '2px', 
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' 
           }}
         >
           EATER ACTIVE

@@ -15,7 +15,7 @@ export default function InputField({field, units, value, onChange}) {
         <div class='element-one'>
           <label htmlFor="nameInput">{field}:</label>
         </div>
-        <div class='element-two' style={{backgroundColor:'#ddf'}}>
+        <div class='element-two' style={{backgroundColor:'rgba(2, 2, 16, 1)'}}>
           <input 
             type='text' 
             value={value}

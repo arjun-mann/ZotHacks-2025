@@ -44,7 +44,7 @@ export default function Header(){
                 margin: 0,
                 textTransform: 'uppercase'
             }}>
-                Personal Trainer
+                EaterActive
             </h1>
     
         

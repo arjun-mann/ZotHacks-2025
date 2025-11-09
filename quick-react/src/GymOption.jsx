@@ -1,13 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 255, 0.3)' }) {
   const hoverTransition = {duration: 0.3, ease: "easeInOut"}
+  const nextPage = '/workout'
   return (
     <motion.div 
       whileHover = {{scale: 1.05}}
       transition = {hoverTransition}
     >
+    <Link to={nextPage}>
       <div style={{ 
           position: 'relative', 
           width: '400px', // Example width
@@ -27,7 +30,8 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
             width: '100%', 
             height: '100%', 
             objectFit: 'cover',
-            zIndex: 1 // Ensure image is behind the overlay but above other content if necessary
+            zIndex: 1, // Ensure image is behind the overlay but above other content if necessary
+            cursor: 'pointer'
           }}
         />
         
@@ -55,6 +59,7 @@ export default function GymOption({ imageUrl, text, tintColor = 'rgba(255, 255, 
           {text}
         </div>
       </div>
+    </Link>
     </motion.div>
   );
 }

@@ -83,8 +83,8 @@
 .day-button-group .btn.active,
 .day-button-group .btn.show,
 .day-button-group .btn:first-child:active {
-    background-color: #1a73e8 !important;
-    border-color: #1a73e8 !important;
+    background-color: #7523c1 !important;
+    border-color: #3a0845 !important;
     color: #ffffff !important;
 }
 

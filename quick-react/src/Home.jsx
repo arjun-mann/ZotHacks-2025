@@ -1,5 +1,4 @@
 import './App.css'
-import Header from './Header.jsx'
 import InputField from './InputField.jsx'
 import Choice from './Choice.jsx'
 import ContinueButton from './async.jsx'
@@ -34,12 +33,27 @@ export default function Home(){
         return () => clearTimeout(timer);
     }, []);
 
+    const handleContinue = () => {
+        const userData = {
+            age,
+            weight,
+            height,
+            sex,
+            goal,
+            selectedDays
+        };
+
+        // Navigate to Gym.jsx with collected input
+        navigate("/gym-choice", { state: userData });
+    };
+
     return(
         <div> 
             <FitnessNavbar />
             <div style={{ paddingTop: '70px'}}>
 
-                <Header/>
+                <img src='src/assets/images/aboutyou.png'></img>
+
                 <div className="animate-on-scroll">
                 <br />
                 <InputField 
@@ -106,6 +120,7 @@ export default function Home(){
                     sex = {sex}
                     goal = {goal}
                     selectedDays = {selectedDays}
+                    onClick={handleContinue}
                 />
                 </div>
             </div>
